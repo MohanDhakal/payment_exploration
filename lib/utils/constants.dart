@@ -11,3 +11,10 @@ const List<String> categories = [
   "Skirts",
   "Dresses"
 ];
+const List<String> subcategories = [
+  "Crop tops",
+  "Sleeveless",
+  "Shirts",
+  "T-shirts",
+  "Sleeveless",
+];

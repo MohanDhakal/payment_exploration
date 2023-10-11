@@ -4,6 +4,7 @@ import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/views/detail_page.dart';
 import 'package:payment_exploration/views/first_page.dart';
 import 'package:payment_exploration/views/home.dart';
+import 'package:payment_exploration/views/products_page.dart';
 import 'package:payment_exploration/views/search_page.dart';
 import 'package:payment_exploration/views/second_page.dart';
 import 'package:payment_exploration/views/third_page.dart';
@@ -80,6 +81,12 @@ final routerInstance = GoRouter(
               ],
             ),
           ],
+        ),
+        GoRoute(
+          path: RouteName.fourth,
+          builder: (BuildContext context, GoRouterState state) {
+            return const ProductsPage();
+          },
         ),
       ],
     ),

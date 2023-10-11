@@ -13,6 +13,8 @@ class CategorySearch extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
+        backgroundColor: Colors.white,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 16.0),
@@ -52,7 +54,7 @@ class CategorySearch extends StatelessWidget {
                         24.0,
                       ), // Adjust the radius as needed
                     ),
-                    elevation: 4, // Elevation (shadow)
+                    elevation: 2, // Elevation (shadow)
                   ),
                   child: const Text(
                     'View All Items',

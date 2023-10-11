@@ -84,12 +84,12 @@ class _HomePageState extends State<HomePage> {
     final String location = GoRouterState.of(context).uri.toString();
     if (location.startsWith(RouteName.first)) {
       return 0;
-    }
-    if (location.startsWith(RouteName.second)) {
+    } else if (location.startsWith(RouteName.second)) {
       return 1;
-    }
-    if (location.startsWith(RouteName.third)) {
+    } else if (location.startsWith(RouteName.third)) {
       return 2;
+    } else if (location.startsWith(RouteName.fourth)) {
+      return 3;
     }
     return 0;
   }
@@ -104,6 +104,9 @@ class _HomePageState extends State<HomePage> {
         break;
       case 2:
         GoRouter.of(context).go(RouteName.third);
+        break;
+      case 3:
+        GoRouter.of(context).go(RouteName.fourth);
         break;
     }
   }
