@@ -8,6 +8,10 @@ class AppImages {
   static const productImage1 = "assets/images/product/1.png";
   static const productImage2 = "assets/images/product/2.png";
   static const productImage3 = "assets/images/product/3.png";
+  static const productDetailmage1 =
+      "assets/images/product/detail_product_1.png";
+  static const productDetailImage2 =
+      "assets/images/product/detail_product_2.png";
   static const categoryWomen1 = "assets/images/product/category_women_1.png";
   static const categoryWomen2 = "assets/images/product/category_women_2.png";
   static const categoryWomen3 = "assets/images/product/category_women_3.png";

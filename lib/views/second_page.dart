@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
 import 'package:payment_exploration/utils/images.dart';
 import 'package:payment_exploration/views/widgets/sale_item.dart';
@@ -48,7 +50,7 @@ class SecondPage extends StatelessWidget {
               padding: EdgeInsets.only(top: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Row(
@@ -89,13 +91,19 @@ class SecondPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SaleItem(
-                          productName: "Evening Dress",
-                          brand: "Dorothy Perkins",
-                          amount: 15,
-                          stock: 10,
-                          discount: 20,
-                          localImage: AppImages.productImage1,
+                        GestureDetector(
+                          onTap: () {
+                            GoRouter.of(context)
+                                .go(RouteName.second + RouteName.productDetail);
+                          },
+                          child: SaleItem(
+                            productName: "Evening Dress",
+                            brand: "Dorothy Perkins",
+                            amount: 15,
+                            stock: 10,
+                            discount: 20,
+                            localImage: AppImages.productImage1,
+                          ),
                         ),
                         SaleItem(
                           productName: "Sport Dress",

@@ -12,4 +12,7 @@ class RouteName {
   static const String third = "/third_page";
   static const String fourth = "/fourth_page";
   static const String categorySearch = "/category_search";
+  static const String filterPage = "/filter";
+  static const String brandPage = "/brands";
+  static const String productDetail = "/product_details";
 }

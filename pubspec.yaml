@@ -75,7 +75,8 @@ flutter:
     - assets/images/banner_1.jpg
     - assets/images/product/1.png
     - assets/images/product/2.png
-    - assets/images/product/3.png
+    - assets/images/product/detail_product_1.png
+    - assets/images/product/detail_product_2.png
     - assets/images/product/category_women_1.png
     - assets/images/product/category_women_2.png
     - assets/images/product/category_women_3.png
