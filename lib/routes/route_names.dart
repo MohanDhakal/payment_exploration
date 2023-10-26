@@ -15,4 +15,5 @@ class RouteName {
   static const String filterPage = "/filter";
   static const String brandPage = "/brands";
   static const String productDetail = "/product_details";
+  static const String productRating = "/product_rating";
 }

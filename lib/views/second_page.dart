@@ -119,7 +119,7 @@ class SecondPage extends StatelessWidget {
                           amount: 15,
                           stock: 10,
                           discount: 20,
-                          localImage: AppImages.productImage3,
+                          localImage: AppImages.productDetailmage1,
                         )
                       ],
                     ),

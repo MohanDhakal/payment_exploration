@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
 import 'package:payment_exploration/utils/constants.dart';
 import 'package:payment_exploration/utils/images.dart';
+import 'package:payment_exploration/views/widgets/item_single.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key});
@@ -22,6 +24,33 @@ class _ProductDetailState extends State<ProductDetail> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: SizedBox(
+          width: size.width,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(16.0),
+              backgroundColor: AppColors.primaryColor,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  24.0,
+                ),
+                // Adjust the radius as needed
+              ),
+            ),
+            child: const Text(
+              'ADD TO CART',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
         elevation: 2,
         backgroundColor: Colors.white,
@@ -46,27 +75,27 @@ class _ProductDetailState extends State<ProductDetail> {
         ),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset(
-                  AppImages.productDetailImage2,
-                  height: 400,
-                ),
-                Image.asset(
-                  AppImages.productDetailmage1,
-                  height: 400,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    AppImages.productDetailImage2,
+                    height: 400,
+                  ),
+                  Image.asset(
+                    AppImages.productDetailmage1,
+                    height: 400,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Row(
+            Row(
               children: [
                 Container(
                   padding: const EdgeInsets.all(8.0),
@@ -172,8 +201,175 @@ class _ProductDetailState extends State<ProductDetail> {
                 )
               ],
             ),
-          )
-        ],
+            SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "H&M",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "\$19.99",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                "Short black dress",
+                style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            SizedBox(height: 12),
+            GestureDetector(
+              onTap: () {
+                GoRouter.of(context).go(RouteName.second +
+                    RouteName.productDetail +
+                    RouteName.productRating);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 16,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 16,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 16,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 16,
+                    ),
+                    Icon(
+                      Icons.star_border_outlined,
+                      size: 16,
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                "Short dress in soft cotton jersey with decorative buttons down the front and a wide, frill-trimmed square neckline with concealed elastication. Elasticated seam under the bust and short puff sleeves with a small frill trim.",
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Item Details",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16)
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            Divider(),
+            SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Shipping info",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16)
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            Divider(),
+            SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Support",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16)
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            Divider(),
+            SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "You may also like these",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  Text(
+                    "12 items",
+                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            SizedBox(
+              height: size.height * 0.4,
+              child: ListView.builder(
+                  itemCount: 4,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return SingleProduct(
+                      productName: 'Evening Dress',
+                      brand: 'Dorothy Perkins',
+                      amount: 12,
+                      stock: 10,
+                    );
+                  }),
+            )
+          ],
+        ),
       ),
     );
   }

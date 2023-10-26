@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/views/detail_page.dart';
+import 'package:payment_exploration/views/favourite_products.dart';
 import 'package:payment_exploration/views/filter_page.dart';
 import 'package:payment_exploration/views/first_page.dart';
 import 'package:payment_exploration/views/home.dart';
+import 'package:payment_exploration/views/my_bag.dart';
 import 'package:payment_exploration/views/product_detail.dart';
+import 'package:payment_exploration/views/product_rating.dart';
 import 'package:payment_exploration/views/products_page.dart';
 import 'package:payment_exploration/views/search_page.dart';
 import 'package:payment_exploration/views/second_page.dart';
@@ -48,70 +51,81 @@ final routerInstance = GoRouter(
         /// Displayed when the second item in the the bottom navigation bar is
         /// selected.
         GoRoute(
-            path: RouteName.second,
-            builder: (BuildContext context, GoRouterState state) {
-              return const SecondPage();
-            },
-            routes: [
-              GoRoute(
+          path: RouteName.second,
+          builder: (BuildContext context, GoRouterState state) {
+            return const SecondPage();
+          },
+          routes: [
+            GoRoute(
                 path: RouteName.productDetail.substring(1),
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (BuildContext context, GoRouterState state) {
                   return const ProductDetail();
                 },
-              ),
-            ]),
+                routes: [
+                  GoRoute(
+                    path: RouteName.productRating.substring(1),
+                    parentNavigatorKey: _rootNavigatorKey,
+                    builder: (BuildContext context, GoRouterState state) {
+                      return const ProductRating();
+                    },
+                  ),
+                ]),
+          ],
+        ),
         GoRoute(
           path: RouteName.third,
           builder: (BuildContext context, GoRouterState state) {
-            return ThirdPage(
-              onDetail: () {
-                GoRouter.of(context).go(RouteName.third + RouteName.detailPage);
-              },
-            );
+            return const MyBag();
+            // return ThirdPage(
+            //   onDetail: () {
+            //     GoRouter.of(context).go(RouteName.third + RouteName.detailPage);
+            //   },
+            // );
           },
-          routes: <RouteBase>[
-            GoRoute(
-              path: RouteName.detailPage.substring(1),
-              builder: (BuildContext context, GoRouterState state) {
-                return DetailPage(
-                  onSearch: () {
-                    GoRouter.of(context).go(RouteName.third +
-                        RouteName.detailPage +
-                        RouteName.categorySearch);
-                  },
-                );
-              },
-              routes: [
-                GoRoute(
-                  path: RouteName.categorySearch.substring(1),
-                  builder: (BuildContext context, GoRouterState state) {
-                    return const CategorySearch();
-                  },
-                ),
-              ],
-            ),
+          routes: const <RouteBase>[
+            // GoRoute(
+            //   path: RouteName.detailPage.substring(1),
+            //   builder: (BuildContext context, GoRouterState state) {
+            //     return DetailPage(
+            //       onSearch: () {
+            //         GoRouter.of(context).go(RouteName.third +
+            //             RouteName.detailPage +
+            //             RouteName.categorySearch);
+            //       },
+            //     );
+            //   },
+            //   routes: [
+            //     GoRoute(
+            //       path: RouteName.categorySearch.substring(1),
+            //       builder: (BuildContext context, GoRouterState state) {
+            //         return const CategorySearch();
+            //       },
+            //     ),
+            //   ],
+            // ),
           ],
         ),
         GoRoute(
           path: RouteName.fourth,
           builder: (BuildContext context, GoRouterState state) {
-            return const ProductsPage();
+            return const FavouritesPage();
           },
           routes: [
             GoRoute(
-                path: RouteName.filterPage.substring(1),
-                builder: (BuildContext context, GoRouterState state) {
-                  return const FilterPage();
-                },
-                routes: [
-                  GoRoute(
-                    path: RouteName.brandPage.substring(1),
-                    builder: (BuildContext context, GoRouterState state) {
-                      return const SelectBrand();
-                    },
-                  ),
-                ]),
+              path: RouteName.filterPage.substring(1),
+              builder: (BuildContext context, GoRouterState state) {
+                return const FilterPage();
+              },
+              routes: [
+                GoRoute(
+                  path: RouteName.brandPage.substring(1),
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const SelectBrand();
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ],

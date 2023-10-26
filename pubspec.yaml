@@ -75,12 +75,19 @@ flutter:
     - assets/images/banner_1.jpg
     - assets/images/product/1.png
     - assets/images/product/2.png
+    - assets/images/product/favourite/1.png
+    - assets/images/product/favourite/2.png
+    - assets/images/product/favourite/3.png
+    - assets/images/product/favourite/4.png
+    - assets/images/rating_user.png
     - assets/images/product/detail_product_1.png
     - assets/images/product/detail_product_2.png
     - assets/images/product/category_women_1.png
     - assets/images/product/category_women_2.png
     - assets/images/product/category_women_3.png
-    - assets/images/product/category_women_4.png
+    - assets/images/rating_images/1.png
+    - assets/images/rating_images/2.png
+    - assets/images/rating_images/3.png
 
 
 
