@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payment_exploration/routes/route_names.dart';
-import 'package:payment_exploration/views/detail_page.dart';
+import 'package:payment_exploration/views/change_address.dart';
+import 'package:payment_exploration/views/edit_address.dart';
 import 'package:payment_exploration/views/favourite_products.dart';
 import 'package:payment_exploration/views/filter_page.dart';
 import 'package:payment_exploration/views/first_page.dart';
 import 'package:payment_exploration/views/home.dart';
 import 'package:payment_exploration/views/my_bag.dart';
+import 'package:payment_exploration/views/my_orders.dart';
+import 'package:payment_exploration/views/order_placed.dart';
+import 'package:payment_exploration/views/payment.dart';
 import 'package:payment_exploration/views/product_detail.dart';
 import 'package:payment_exploration/views/product_rating.dart';
-import 'package:payment_exploration/views/products_page.dart';
-import 'package:payment_exploration/views/search_page.dart';
+import 'package:payment_exploration/views/profile_page.dart';
 import 'package:payment_exploration/views/second_page.dart';
 import 'package:payment_exploration/views/select_brand_page.dart';
-import 'package:payment_exploration/views/third_page.dart';
+import '../views/checkout_page.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -23,18 +26,6 @@ final routerInstance = GoRouter(
   initialLocation: RouteName.first,
   navigatorKey: _rootNavigatorKey,
   routes: [
-    // GoRoute(
-    //   path: RouteName.visualSearch,
-    //   builder: (context, state) => const VisualSearchPage(),
-    // ),
-    // GoRoute(
-    //   path: RouteName.login,
-    //   builder: (context, state) => const LoginPage(),
-    // ),
-    // GoRoute(
-    //   path: RouteName.signup,
-    //   builder: (context, state) => const SignupPage(),
-    // ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
@@ -77,33 +68,36 @@ final routerInstance = GoRouter(
           path: RouteName.third,
           builder: (BuildContext context, GoRouterState state) {
             return const MyBag();
-            // return ThirdPage(
-            //   onDetail: () {
-            //     GoRouter.of(context).go(RouteName.third + RouteName.detailPage);
-            //   },
-            // );
           },
-          routes: const <RouteBase>[
-            // GoRoute(
-            //   path: RouteName.detailPage.substring(1),
-            //   builder: (BuildContext context, GoRouterState state) {
-            //     return DetailPage(
-            //       onSearch: () {
-            //         GoRouter.of(context).go(RouteName.third +
-            //             RouteName.detailPage +
-            //             RouteName.categorySearch);
-            //       },
-            //     );
-            //   },
-            //   routes: [
-            //     GoRoute(
-            //       path: RouteName.categorySearch.substring(1),
-            //       builder: (BuildContext context, GoRouterState state) {
-            //         return const CategorySearch();
-            //       },
-            //     ),
-            //   ],
-            // ),
+          routes: <RouteBase>[
+            GoRoute(
+              path: RouteName.checkout.substring(1),
+              builder: (BuildContext context, GoRouterState state) {
+                return const CheckoutPage();
+              },
+              routes: [
+                GoRoute(
+                  path: RouteName.address.substring(1),
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const ChangeAddress();
+                  },
+                  routes: [
+                    GoRoute(
+                      path: RouteName.edit.substring(1),
+                      builder: (BuildContext context, GoRouterState state) {
+                        return const EditAddress();
+                      },
+                    )
+                  ],
+                ),
+                GoRoute(
+                  path: RouteName.payment.substring(1),
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const PaymentPage();
+                  },
+                )
+              ],
+            ),
           ],
         ),
         GoRoute(
@@ -128,12 +122,26 @@ final routerInstance = GoRouter(
             ),
           ],
         ),
+        GoRoute(
+          path: RouteName.fifth,
+          builder: (BuildContext context, GoRouterState state) {
+            return const CustomerProfile();
+          },
+          routes: [
+            GoRoute(
+              path: RouteName.orderDetail.substring(1),
+              builder: (BuildContext context, GoRouterState state) {
+                return const MyOrders();
+              },
+            ),
+          ],
+        ),
       ],
     ),
-    // GoRoute(
-    //   path: RouteName.forgotPassword,
-    //   builder: (context, state) => const ForgotPasswordPage(),
-    // ),
+    GoRoute(
+      path: RouteName.orderPlaced,
+      builder: (context, state) => const OrderPlacedScreen(),
+    ),
     // GoRoute(
     //   path: RouteName.clickImage,
     //   builder: (context, state) => const PickImage(),

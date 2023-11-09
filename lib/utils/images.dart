@@ -24,6 +24,13 @@ class AppImages {
   static const fav1 = "assets/images/product/favourite/1.png";
   static const fav2 = "assets/images/product/favourite/2.png";
   static const fav3 = "assets/images/product/favourite/3.png";
+  static const mastercard = "assets/images/mastercard.png";
+  static const fedex = "assets/images/fedex.png";
+  static const usps = "assets/images/usps.png";
+  static const dhl = "assets/images/dhl.png";
+  static const chip = "assets/images/chip.png";
+  static const bags = "assets/images/bags.png";
+  static const profileImage = "assets/images/profile_image.png";
 
   static List<String> getProductImages() {
     return [categoryWomen1, categoryWomen2, categoryWomen3, categoryWomen4];

@@ -11,9 +11,19 @@ class RouteName {
   static const String second = "/second_page";
   static const String third = "/third_page";
   static const String fourth = "/fourth_page";
+  static const String fifth = "/fifth_page";
   static const String categorySearch = "/category_search";
   static const String filterPage = "/filter";
   static const String brandPage = "/brands";
   static const String productDetail = "/product_details";
   static const String productRating = "/product_rating";
+  static const String checkout = "/checkout";
+  static const String address = "/address";
+  static const String edit = "/edit";
+  static const String payment = "/payment";
+  static const String orderPlaced = "/order_placed";
+  static const String profile = "/profile";
+  static const String orderDetail = "/orders_detail";
+  static const String settings = "/settings";
+  static const String orderEdit = "/edit  ";
 }

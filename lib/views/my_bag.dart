@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:payment_exploration/custom_app_icons.dart';
-import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
-import 'package:payment_exploration/utils/constants.dart';
 import 'package:payment_exploration/utils/images.dart';
+import 'package:payment_exploration/utils/menu_action.dart';
+import 'package:payment_exploration/views/widgets/promo_code.dart';
+
+import '../routes/route_names.dart';
 
 class MyBag extends StatefulWidget {
   const MyBag({super.key});
@@ -15,6 +16,7 @@ class MyBag extends StatefulWidget {
 }
 
 class _MyBagState extends State<MyBag> {
+  String promoCode = "Enter Your Promo Code";
   int count = 1;
   @override
   void initState() {
@@ -41,100 +43,244 @@ class _MyBagState extends State<MyBag> {
         padding: EdgeInsets.symmetric(horizontal: 12),
         child: SizedBox(
           height: size.height,
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(height: 16),
-            Text(
-              "Favorites",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge
-                  ?.copyWith(fontSize: 36, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                shrinkWrap: true,
-                itemBuilder: ((context, index) {
-                  return CartItemWidget(
-                    itemName: "Item Number ${index++}",
-                    itemCount: count,
-                    onIncrement: () {
-                      setState(() {
-                        count++;
-                      });
-                    },
-                    onDecrement: () {
-                      setState(() {
-                        if (count > 1) {
-                          count--;
-                        }
-                      });
-                    },
-                  );
-                }),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 16),
+              Text(
+                "My Bag",
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge
+                    ?.copyWith(fontSize: 36, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(height: 12),
-          ]),
+              SizedBox(height: 16),
+              Expanded(
+                child: SizedBox(
+                  height: size.height * 0.7,
+                  child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: ((context, index) {
+                      return CartItemWidget(
+                        itemName: "Item Number ${index++}",
+                        itemCount: count,
+                        onIncrement: () {
+                          setState(() {
+                            count++;
+                          });
+                        },
+                        onDecrement: () {
+                          setState(() {
+                            if (count > 1) {
+                              count--;
+                            }
+                          });
+                        },
+                      );
+                    }),
+                  ),
+                ),
+              ),
+              SizedBox(height: 12),
+              GestureDetector(
+                onTap: () {
+                  _showBottomSheet(context);
+                },
+                child: Container(
+                  height: 36,
+                  width: size.width,
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0, 1),
+                        blurRadius: 8,
+                        color: Colors.black.withOpacity(0.05),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        promoCode,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.gray,
+                            fontSize: 12),
+                      ),
+                      Container(
+                        height: 36,
+                        width: 36,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black,
+                        ),
+                        child: Icon(
+                          Icons.arrow_forward_outlined,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 12),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12.0,
+                  vertical: 12.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Total Amount",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.gray,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      "124\$",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+                child: SizedBox(
+                  width: size.width,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      GoRouter.of(context)
+                          .go(RouteName.third + RouteName.checkout);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16.0),
+                      backgroundColor: AppColors.primaryColor,
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          24.0,
+                        ),
+                        // Adjust the radius as needed
+                      ),
+                    ),
+                    child: const Text(
+                      'CHECK OUT',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
   void _showBottomSheet(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                  width: 60,
-                  height: 6,
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 16.0),
+              Container(
+                width: 60,
+                height: 6,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  color: AppColors.gray,
+                ),
+              ),
+              SizedBox(height: 16.0),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).pop();
+                },
+                child: Container(
+                  height: 36,
+                  width: size.width,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: AppColors.gray,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0, 1),
+                        blurRadius: 8,
+                        color: Colors.black.withOpacity(0.05),
+                      ),
+                    ],
                   ),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  'Sort by',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 16.0),
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    ...List.generate(filters.length, (index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Text(filters.elementAt(index)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        promoCode,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.gray,
+                          fontSize: 12,
                         ),
-                      );
-                    }),
-                  ],
-                )
-                // Text('This is the content of the bottom sheet.'),
-                // SizedBox(height: 16.0),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.of(context).pop();
-                //   },
-                //   child: Text('Close'),
-                // ),
-              ],
-            ),
+                      ),
+                      Container(
+                        height: 36,
+                        width: 36,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black,
+                        ),
+                        child: const Icon(
+                          Icons.arrow_forward_outlined,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              PromoCode(
+                id: 1,
+                validDays: 12,
+                discountPercentage: 12.0,
+                name: "Personal offer",
+                description: "mypromocode2020",
+                onSelected: (String code) {
+                  setState(() {
+                    promoCode = code;
+                  });
+                  GoRouter.of(context).pop();
+                },
+              ),
+              SizedBox(height: 8.0),
+              PromoCode(
+                id: 2,
+                validDays: 21,
+                discountPercentage: 8.0,
+                name: "Summer Sale",
+                description: "summer2020",
+                onSelected: (String code) {
+                  setState(() {
+                    promoCode = code;
+                  });
+                  GoRouter.of(context).pop();
+                },
+              )
+            ],
           ),
         );
       },
@@ -201,9 +347,24 @@ class CartItemWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: size.width * 0.1),
-                    IconButton(
-                      onPressed: () {},
+                    PopupMenuButton(
                       icon: Icon(Icons.more_vert),
+                      itemBuilder: (BuildContext context) {
+                        return [
+                          PopupMenuItem(
+                            child: Text('Add to Favourite'),
+                            value: PopupMenuAction.favourite,
+                          ),
+                          PopupMenuItem(
+                            child: Text('Delete from the list'),
+                            value: PopupMenuAction.delete,
+                          ),
+                        ];
+                      },
+                      onSelected: (value) {
+                        // Add your logic here
+                        debugPrint('Selected: $value');
+                      },
                     ),
                   ],
                 ),
@@ -258,8 +419,8 @@ class CartItemWidget extends StatelessWidget {
                       ),
                       child: IconButton(
                         icon: Icon(Icons.remove),
-                        onPressed: onIncrement,
-                        iconSize: 24,
+                        onPressed: onDecrement,
+                        iconSize: 16,
                       ),
                     ),
                     SizedBox(width: 8),
@@ -267,6 +428,7 @@ class CartItemWidget extends StatelessWidget {
                       '$itemCount',
                       style: TextStyle(fontSize: 18),
                     ),
+                    SizedBox(width: 8),
                     Container(
                       height: 36,
                       width: 36,
@@ -286,7 +448,7 @@ class CartItemWidget extends StatelessWidget {
                       child: IconButton(
                         icon: Icon(Icons.add),
                         onPressed: onIncrement,
-                        iconSize: 24,
+                        iconSize: 16,
                       ),
                     ),
                     SizedBox(width: size.width * 0.1),

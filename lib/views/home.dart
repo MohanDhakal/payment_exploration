@@ -90,6 +90,8 @@ class _HomePageState extends State<HomePage> {
       return 2;
     } else if (location.startsWith(RouteName.fourth)) {
       return 3;
+    } else if (location.startsWith(RouteName.fifth)) {
+      return 4;
     }
     return 0;
   }
@@ -107,6 +109,9 @@ class _HomePageState extends State<HomePage> {
         break;
       case 3:
         GoRouter.of(context).go(RouteName.fourth);
+        break;
+      case 4:
+        GoRouter.of(context).go(RouteName.fifth);
         break;
     }
   }

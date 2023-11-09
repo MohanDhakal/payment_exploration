@@ -127,3 +127,15 @@ const List<Map<String, dynamic>> favouriteProducts = [
     "in_cart": true,
   },
 ];
+const List<Map<String, dynamic>> shippingAddresses = [
+  {
+    "id": 1,
+    "name": "John Doe",
+    "address_detail": "3 Newbridge Court Chino Hills, CA 91709, United States",
+  },
+  {
+    "id": 2,
+    "name": "River Plate",
+    "address_detail": "51 Riverside Chino Hills, CA 91709, United States",
+  },
+];
