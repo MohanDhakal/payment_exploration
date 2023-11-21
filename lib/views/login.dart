@@ -8,7 +8,8 @@ import 'package:payment_exploration/views/widgets/socials.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final void Function(bool status) onLogin;
+  const LoginPage({super.key, required this.onLogin});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -20,18 +21,21 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  void validateForm() {
+  bool validateForm() {
     bool validated = _formKey.currentState?.validate() ?? false;
     if (validated) {
-      Provider.of<CameraDependencies>(context).controller?.dispose();
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        RouteName
-            .home, // Replace '/newScreen' with the name of the route you want to navigate to.
-        (Route<dynamic> route) =>
-            false, // This condition ensures that all previous routes are removed.
-      );
+      Provider.of<CameraDependencies>(context, listen: false)
+          .controller
+          ?.dispose();
+      // Navigator.pushNamedAndRemoveUntil(
+      //   context,
+      //   RouteName
+      //       .home, // Replace '/newScreen' with the name of the route you want to navigate to.
+      //   (Route<dynamic> route) =>
+      //       false, // This condition ensures that all previous routes are removed.
+      // );
     }
+    return validated;
   }
 
   @override
@@ -145,7 +149,9 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: size.width,
                   child: ElevatedButton(
-                    onPressed: validateForm,
+                    onPressed: () {
+                      widget.onLogin(validateForm());
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(16.0),
                       backgroundColor: AppColors.primaryColor,

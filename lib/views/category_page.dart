@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payment_exploration/views/women_category.dart';
 
-class DetailPage extends StatefulWidget {
+class CategoryPage extends StatefulWidget {
   final Function() onSearch;
-  const DetailPage({super.key, required this.onSearch});
+  const CategoryPage({super.key, required this.onSearch});
 
   @override
-  State<DetailPage> createState() => _DetailPageState();
+  State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _CategoryPageState extends State<CategoryPage> {
   // bool _searching = false;
 
   @override

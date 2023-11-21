@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:payment_exploration/dependencies/app_state.dart';
 import 'package:payment_exploration/dependencies/camera_dependencies.dart';
 import 'package:payment_exploration/routes/routes_handler.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
+import 'package:payment_exploration/utils/app_states.dart';
 import 'package:payment_exploration/utils/app_styles.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +21,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<CameraDependencies>(
           create: (_) => CameraDependencies(),
-        )
+        ),
+        ChangeNotifierProvider<AppStateProvider>(
+          create: (_) => AppStateProvider(),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',

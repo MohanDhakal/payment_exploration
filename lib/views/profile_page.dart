@@ -33,7 +33,7 @@ class _CustomerProfileState extends State<CustomerProfile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "My Bag",
+              "My Profile",
               style: Theme.of(context)
                   .textTheme
                   .headlineLarge
@@ -90,8 +90,7 @@ class _CustomerProfileState extends State<CustomerProfile> {
             const SizedBox(height: 8),
             GestureDetector(
               onTap: () {
-                GoRouter.of(context)
-                    .go(RouteName.fifth + RouteName.orderDetail);
+                GoRouter.of(context).go(RouteName.fifth + RouteName.myOrders);
               },
               child: const ProfileOptionItem(
                 title: 'My Orders',
@@ -119,9 +118,14 @@ class _CustomerProfileState extends State<CustomerProfile> {
               detail: 'Reviews for 4 items',
             ),
             const SizedBox(height: 8),
-            const ProfileOptionItem(
-              title: 'Settings',
-              detail: 'Notifications, password',
+            GestureDetector(
+              onTap: () {
+                GoRouter.of(context).go(RouteName.fifth + RouteName.settings);
+              },
+              child: const ProfileOptionItem(
+                title: 'Settings',
+                detail: 'Notifications, password',
+              ),
             ),
           ],
         ),

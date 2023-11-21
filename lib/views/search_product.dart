@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
-
 import '../routes/route_names.dart';
 
 class SearchProduct extends StatefulWidget {
@@ -15,13 +15,7 @@ class _SearchProductState extends State<SearchProduct> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        RouteName
-            .home, // Replace '/newScreen' with the name of the route you want to navigate to.
-        (Route<dynamic> route) =>
-            false, // This condition ensures that all previous routes are removed.
-      );
+      context.go(RouteName.dashboard);
     });
   }
 

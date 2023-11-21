@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:payment_exploration/utils/order_status.dart';
-import 'package:payment_exploration/views/order_details.dart';
+import 'package:payment_exploration/views/orders_list.dart';
 
 class MyOrders extends StatefulWidget {
   const MyOrders({super.key});
@@ -106,13 +106,13 @@ class _MyOrdersState extends State<MyOrders> with TickerProviderStateMixin {
                     height: size.height,
                     child: TabBarView(
                       children: [
-                        OrderDetails(
+                        OrdersList(
                           status: OrderStatus.Delivered,
                         ),
-                        OrderDetails(
+                        OrdersList(
                           status: OrderStatus.Processing,
                         ),
-                        OrderDetails(
+                        OrdersList(
                           status: OrderStatus.Cancelled,
                         ),
                       ],

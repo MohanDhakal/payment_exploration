@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/utils/images.dart';
 import '../utils/app_colors.dart';
@@ -59,10 +60,7 @@ class _VisualSearchPageState extends State<VisualSearchPage> {
                 width: size.width,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      RouteName.clickImage,
-                    );
+                    context.go(RouteName.clickImage);
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(16.0),
@@ -91,13 +89,14 @@ class _VisualSearchPageState extends State<VisualSearchPage> {
                     padding: const EdgeInsets.all(16.0),
                     backgroundColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          24.0,
-                        ), // Adjust the radius as needed
-                        side: const BorderSide(
-                          width: 2.0,
-                          color: Colors.white,
-                        )),
+                      borderRadius: BorderRadius.circular(
+                        24.0,
+                      ), // Adjust the radius as needed
+                      side: const BorderSide(
+                        width: 2.0,
+                        color: Colors.white,
+                      ),
+                    ),
 
                     elevation: 4, // Elevation (shadow)
                   ),

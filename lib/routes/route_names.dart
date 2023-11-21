@@ -1,5 +1,6 @@
 class RouteName {
   static const String home = "/";
+  static const String dashboard = "/dashboard";
   static const String signup = "/signup";
   static const String login = "/login";
   static const String forgotPassword = "/forgot_password";
@@ -8,10 +9,12 @@ class RouteName {
   static const String visualSearch = "/visual_search";
   static const String detailPage = "/details";
   static const String first = "/first_page";
+  static const String allItemsPage = "/all_items";
   static const String second = "/second_page";
   static const String third = "/third_page";
   static const String fourth = "/fourth_page";
   static const String fifth = "/fifth_page";
+  static const String category = "/category";
   static const String categorySearch = "/category_search";
   static const String filterPage = "/filter";
   static const String brandPage = "/brands";
@@ -23,7 +26,8 @@ class RouteName {
   static const String payment = "/payment";
   static const String orderPlaced = "/order_placed";
   static const String profile = "/profile";
-  static const String orderDetail = "/orders_detail";
+  static const String myOrders = "/my_orders";
   static const String settings = "/settings";
   static const String orderEdit = "/edit  ";
+  static const String orderDetails = "/order_details";
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:payment_exploration/dependencies/camera_dependencies.dart';
 import 'package:payment_exploration/routes/route_names.dart';
@@ -83,13 +84,13 @@ class _PickImageState extends State<PickImage>
             icon: const Icon(Icons.search_rounded),
             color: imageFile == null ? Colors.white : Colors.black,
             onPressed: () {
-              Navigator.pushReplacementNamed(
-                context,
-                RouteName.searchProduct,
-                arguments: {
-                  "image_file": imageFile,
-                },
-              );
+              GoRouter.of(context).go(RouteName.searchProduct);
+              // context.go(
+              //   RouteName.searchProduct,
+              //   queryParameters: {
+              //     "image_file": imageFile,
+              //   },
+              // );
             },
           ),
         ),

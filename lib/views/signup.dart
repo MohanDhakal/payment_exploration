@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
 import 'package:payment_exploration/utils/validators.dart';
 import 'package:payment_exploration/views/widgets/socials.dart';
-import '../routes/route_names.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -12,6 +11,8 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  bool signedUp = false;
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -20,8 +21,14 @@ class _SignupPageState extends State<SignupPage> {
   void validateForm() {
     bool validated = _formKey.currentState?.validate() ?? false;
     if (validated) {
-      Navigator.pushNamed(context, RouteName.login);
+      setState(() {
+        signedUp = true;
+      });
     }
+
+    // if (validated) {
+    //   Navigator.pushNamed(context, RouteName.login);
+    // }
   }
 
   @override
@@ -51,7 +58,8 @@ class _SignupPageState extends State<SignupPage> {
                   height: 64,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
-                        8.0), // Adjust the radius as needed
+                      8.0,
+                    ), // Adjust the radius as needed
                     boxShadow: const [
                       BoxShadow(
                         offset: Offset(1, 0),
@@ -142,7 +150,9 @@ class _SignupPageState extends State<SignupPage> {
                 const SizedBox(height: 16),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, RouteName.login);
+                    setState(() {
+                      signedUp = true;
+                    });
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,

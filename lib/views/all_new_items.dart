@@ -6,11 +6,10 @@ import 'package:payment_exploration/routes/route_names.dart';
 import 'package:payment_exploration/utils/app_colors.dart';
 import 'package:payment_exploration/utils/images.dart';
 import 'package:payment_exploration/views/widgets/sale_item.dart';
-
 import 'widgets/item_single.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+class AllNewItems extends StatelessWidget {
+  const AllNewItems({super.key});
 
   @override
   Widget build(BuildContext context) {

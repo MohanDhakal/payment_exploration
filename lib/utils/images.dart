@@ -16,7 +16,7 @@ class AppImages {
   static const categoryWomen1 = "assets/images/product/category_women_1.png";
   static const categoryWomen2 = "assets/images/product/category_women_2.png";
   static const categoryWomen3 = "assets/images/product/category_women_3.png";
-  static const categoryWomen4 = "assets/images/product/category_women_4.png";
+  static const categoryWomen4 = "assets/images/product/category_women_1.png";
 
   static const raingImage1 = "assets/images/rating_images/1.png";
   static const raingImage2 = "assets/images/rating_images/2.png";

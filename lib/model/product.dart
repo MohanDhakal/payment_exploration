@@ -24,6 +24,7 @@ class ProductItem {
   int? ratingCount;
   bool? isFavourite;
   int? discount;
+  bool inProfile;
   String imageUri;
   ProductItem({
     required this.id,
@@ -37,21 +38,23 @@ class ProductItem {
     required this.inCart,
     this.ratingCount,
     this.isFavourite,
+    this.inProfile = false,
     this.discount,
   });
   factory ProductItem.fromJson(Map<String, dynamic> data) {
     return ProductItem(
-        id: data["id"],
-        brand: data["brand"],
-        color: data["color"],
-        name: data["name"],
-        price: data["price"],
-        size: data["size"],
-        imageUri: data["image_uri"],
-        inStock: data["in_stock"],
-        inCart: data["in_cart"],
-        ratingCount: data["rating_count"],
-        isFavourite: data["is_favourite"],
-        discount: data["discount_percentage"]);
+      id: data["id"],
+      brand: data["brand"],
+      color: data["color"],
+      name: data["name"],
+      price: data["price"],
+      size: data["size"],
+      imageUri: data["image_uri"],
+      inStock: data["in_stock"],
+      inCart: data["in_cart"],
+      ratingCount: data["rating_count"],
+      isFavourite: data["is_favourite"],
+      discount: data["discount_percentage"],
+    );
   }
 }

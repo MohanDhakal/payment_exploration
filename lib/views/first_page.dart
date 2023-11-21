@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
+import 'package:payment_exploration/routes/route_names.dart';
 import '../utils/app_colors.dart';
 import '../utils/images.dart';
 import 'widgets/item_single.dart';
@@ -138,10 +139,16 @@ class FirstPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Text(
-                          "view all",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
+                        GestureDetector(
+                          onTap: () {
+                            GoRouter.of(context)
+                                .go(RouteName.first + RouteName.category);
+                          },
+                          child: Text(
+                            "view all",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                            ),
                           ),
                         ),
                       ],

@@ -16,7 +16,14 @@ class ProductItemList extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: Colors.grey.shade200),
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(
+                  offset: Offset(0, 1),
+                  blurRadius: 24,
+                  color: Colors.black12,
+                )
+              ]),
           height: 104,
           width: size.width - 24,
           margin: EdgeInsets.symmetric(vertical: 8),
@@ -52,11 +59,13 @@ class ProductItemList extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const Icon(
-                              Icons.close,
-                              color: AppColors.gray,
-                              size: 24,
-                            ),
+                            item.inProfile == true
+                                ? SizedBox()
+                                : const Icon(
+                                    Icons.close,
+                                    color: AppColors.gray,
+                                    size: 24,
+                                  ),
                           ],
                         ),
                       ),
